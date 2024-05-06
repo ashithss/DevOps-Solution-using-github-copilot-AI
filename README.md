@@ -1,10 +1,38 @@
+# Generate DevOps solutions using github copilot
+
+1) Dockerfile 
+  prompt:- @workspace create a Dockerfile
 ![Image Alt text](/screenshots/dockerfile.png "Dockefile")
+
+2) Azure-pipeline
+  prompt:- @workspace create azure pipeline for CI part - use docker
+           @workspace add task to push docker image to docker hub registry
+           add artifact, cache and also add stage for deployment I had manifest files in root dir - deployment is in azure kubernetes service, - and also optimise full azure-pipeline configuration file
+
 ![Image Alt text](/screenshots/pipeline-1.png "pipeline-1")
 ![Image Alt text](/screenshots/pipeline-2.png "pipeline-2")
+
+3) k8s manifest files - Deployment file
+
+  prompt:- @workspace create kubernetes deployment.yaml which should have all the security concepts and also add livenessprobe readinerssprobe
+
 ![Image Alt text](/screenshots/deployment-1.png "Deployment")
+
+4) Service manifest file
+  prompt:- @workspace create k8s service for deployment
 ![Image Alt text](/screenshots/service.png "Service")
+
+5) HPA
+  prompt:- @workspace and also add HPA to deployment
 ![Image Alt text](/screenshots/hpa.png "hpa")
+
+6) Persistent Volume and Persistent Volume claim
+  prompt:- @workspace use azure blob storage for persistent volume storage create respective PV,PVC files and also update deployment file
+
 ![Image Alt text](/screenshots/volume.png "volume")
+
+7) Ingress
+  prompt:- @workspace create ingress file
 ![Image Alt text](/screenshots/ingress.png "ingress")
 
 
