@@ -1,4 +1,4 @@
-# Generate DevOps solutions using github copilot
+# 🤖 Generate DevOps solutions using github copilot 
 
 ## 1) Dockerfile 
 
@@ -6,7 +6,7 @@
 
 ![Image Alt text](/screenshots/dockerfile.png "Dockefile")
 
-## 2) Azure-pipeline
+## 2) Azure-pipeline ☁️ 
 
   prompt:- @workspace create azure pipeline for CI part - use docker
            @workspace add task to push docker image to docker hub registry
