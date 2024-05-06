@@ -1,3 +1,16 @@
+![Image Alt text](/screenshots/dockerfile.png "Dockefile")
+![Image Alt text](/screenshots/pipeline-1.png "pipeline-1")
+![Image Alt text](/screenshots/pipeline-2.png "pipeline-2")
+![Image Alt text](/screenshots/deployment-1.png "Deployment")
+![Image Alt text](/screenshots/service.png "Service")
+![Image Alt text](/screenshots/hpa.png "hpa")
+![Image Alt text](/screenshots/volume.png "volume")
+![Image Alt text](/screenshots/ingress.png "ingress")
+
+
+
+
+
 ###### <sub> This project needs a ⭐️ from you. Don't forget to leave a star ⭐️. <sub/>
 
 ![appLight](/images/Light.png)
