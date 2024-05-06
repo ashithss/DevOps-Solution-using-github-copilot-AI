@@ -1,27 +1,17 @@
-# Use the official Python image as the base image
-# This image contains the Python interpreter and the standard library
+# Use an official Python runtime as a parent image
 FROM python:3.12.1
 
-# Set the working directory to /app
-# This is where the app code and files will be stored inside the container
+# Set the working directory in the container to /app
 WORKDIR /app
 
-# Copy the requirements file from the current directory to the /app directory
-# This file lists the Python packages that the app depends on
-COPY requirements.txt .
+# Add the current directory contents into the container at /app
+ADD . /app
 
-# Install the dependencies using pip
-# This will ensure that the app has all the necessary modules to run
-RUN pip install -r requirements.txt
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the code and files from the current directory to the /app directory
-# This will include the app.py file and any other files needed by the app
-COPY . .
-
-# Expose the port 5000 to the outside world
-# This is the port that the app listens on and accepts connections from
+# Make port 80 available to the world outside this container
 EXPOSE 5000
 
-# Define the command to run the app when the container starts
-# This will execute the app.py file using the Python interpreter
+# Run app.py when the container launches
 CMD ["python", "app.py"]
