@@ -50,6 +50,8 @@ pipeline {
             steps {
                     script{
                         sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
+                        sh "hostname"
+                        sh "kubectl get pods"
                         sh "kubectl config use-context my-cluster"
                         sh "kubectl apply -f k8s-manifest/namespace.yaml"
                         sh "kubectl apply -f k8s-manifest/deployment.yaml -n github-copilot "
