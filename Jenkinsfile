@@ -41,7 +41,7 @@ pipeline {
             steps {
                     script{
                         sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
-                        sh "sudo su - ec2-user"
+                        sh "sudo -u ec2-user"
                         sh "kubectl apply -f k8s-manifest/namespace.yaml"
                         sh "kubectl apply -f k8s-manifest/deployment.yaml -n github-copilot "
                         sh "kubectl apply -f k8s-manifest/service.yaml -n github-copilot"
