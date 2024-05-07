@@ -8,22 +8,25 @@ GitHub Copilot offers code suggestions based on code you either start writing OR
 
 
 ## Installing CoPilot
-step 1 :- Ensure Visual Studio Compatibility - On macOS, go to Code > About Visual Studio Code.
+* step 1 :- Ensure Visual Studio Compatibility - On macOS, go to Code > About Visual Studio Code.
                                                On Windows and Linux, go to Help > About Microsoft VS.
-step 2 :- Install GitHub Copilot Extension
+
+* step 2 :- Install GitHub Copilot Extension
           Go to the “Extensions” (“Ctrl+Shift+X” )
           search for “GitHub Copilot,” and click on the “Download” or “Install” button.
-step 3 :- Restart Visual Studio
+
+* step 3 :- Restart Visual Studio
 Congratulations, you now have CoPilot installed on your machine!
 
 ## Using Co-Pilot
 
-step 1 :- Launch Visual Studio and open a project in which you want to use Co-Pilot. It could be an existing project or a new one.
+* step 1 :- Launch Visual Studio and open a project in which you want to use Co-Pilot. It could be an existing project or a new one.
           If you have a GitHub Account already set:
               A prompt will pop-up asking to authenticate to GitHub.
               A code will be outputted in the output window, copy this code, click on the link and paste it onto the GitHub page.
               Then select authorise the GitHub CoPilot plugin.
-step 2 :- To use chat bot - on left side click on chat icon and do sign-in.
+
+* step 2 :- To use chat bot - on left side click on chat icon and do sign-in.
 
 
 
@@ -81,7 +84,7 @@ step 2 :- To use chat bot - on left side click on chat icon and do sign-in.
 
 ## To see the Generated files
 
-K8s Manifest files :- https://github.com/ashith18/devops-github-copilot/tree/main/k8s-manifest
+* K8s Manifest files :- https://github.com/ashith18/devops-github-copilot/tree/main/k8s-manifest
 
 
 ###### <sub> This project needs a ⭐️ from you. Don't forget to leave a star ⭐️. <sub/>
