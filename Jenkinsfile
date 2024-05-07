@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     // Authenticate to ECR
-                    sh "aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${accountID}.dkr.ecr.your-region.amazonaws.com"
+                    sh "aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${accountID}.dkr.ecr.${region}.amazonaws.com"
 
                     // Tag the image with the ECR repository URL
                     sh "docker tag ${DOCKER_IMAGE}:${env.BUILD_ID} ${accountID}.dkr.ecr.${region}.amazonaws.com/demoapp:${env.BUILD_ID}"
