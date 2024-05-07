@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'demoapp'
         DOCKER_CREDENTIALS_ID = 'your-dockerhub-credentials-id'
-        KUBECONFIG_CREDENTIALS_ID = 'your-kubeconfig-credentials-id'
+        // KUBECONFIG_CREDENTIALS_ID = 'your-kubeconfig-credentials-id'
         EKS_CLUSTER_NAME = 'my-cluster'
         region = 'us-east-1'
         accountID = '4997-5607-6901'
