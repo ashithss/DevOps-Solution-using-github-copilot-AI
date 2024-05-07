@@ -5,7 +5,7 @@ metadata:
   labels:
     app: your-app
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: your-app
@@ -16,33 +16,35 @@ spec:
     spec:
       containers:
       - name: your-app
-        image: yourdockerhubusername/your-python-app:latest
+        image: ashithss/docker_testv1:latest
         ports:
-        - containerPort: 80
+        - containerPort: 5000
         livenessProbe:
           httpGet:
-            path: /health
-            port: 80
+            path: /
+            port: 5000
           initialDelaySeconds: 15
           timeoutSeconds: 30
         readinessProbe:
           httpGet:
-            path: /ready
-            port: 80
+            path: /
+            port: 5000
           initialDelaySeconds: 5
           timeoutSeconds: 1
-        securityContext:
-          runAsNonRoot: true
-          runAsUser: 1000
-          readOnlyRootFilesystem: true
-          capabilities:
-            drop:
-            - ALL
+
+
+        # securityContext:
+        #   runAsNonRoot: true
+        #   runAsUser: 1000
+        #   readOnlyRootFilesystem: true
+        #   capabilities:
+        #     drop:
+        #     - ALL
         # volumeMounts:
         # - mountPath: "/data"
         #   name: azure-storage
-      securityContext:
-        fsGroup: 2000
+      # securityContext:
+      #   fsGroup: 2000
       # volumes:
       # - name: azure-storage
       #   persistentVolumeClaim:

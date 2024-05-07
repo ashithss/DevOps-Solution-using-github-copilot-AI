@@ -4,7 +4,7 @@ metadata:
   name: your-app-ingress
 spec:
   rules:
-  - host: your-app.your-domain.com
+  - host: python-app.172.24.136.36.nip.io
     http:
       paths:
       - pathType: Prefix
@@ -13,4 +13,4 @@ spec:
           service:
             name: your-app-service
             port:
-              number: 80
+              number: 5000
