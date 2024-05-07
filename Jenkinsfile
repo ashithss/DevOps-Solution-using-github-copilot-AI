@@ -49,7 +49,7 @@ pipeline {
 
         stage('Deploy to EKS') {
             steps {
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: AWS_ID]]) {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'AWS_ID']]) {
                     // Your AWS CLI or SDK commands here
                     sh 'aws s3 ls'  // Example AWS CLI command
                     sh 'kubectl get pods'  
