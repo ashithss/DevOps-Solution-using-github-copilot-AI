@@ -24,10 +24,6 @@ pipeline {
                     sh "aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${accountID}.dkr.ecr.${region}.amazonaws.com"
                     sh "docker tag ${DOCKER_IMAGE}:${env.BUILD_ID} 499756076901.dkr.ecr.${region}.amazonaws.com/${DOCKER_IMAGE}:${env.BUILD_ID}"
                     sh "docker push ${accountID}.dkr.ecr.${region}.amazonaws.com/${DOCKER_IMAGE}:${env.BUILD_ID}"
-
-                    // sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 499756076901.dkr.ecr.us-east-1.amazonaws.com"
-                    // sh "docker tag demoapp:${env.BUILD_ID} 499756076901.dkr.ecr.us-east-1.amazonaws.com/demoapp:${env.BUILD_ID}"
-                    // sh "docker push 499756076901.dkr.ecr.us-east-1.amazonaws.com/demoapp:${env.BUILD_ID}"
                 }
             }
         }
