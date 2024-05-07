@@ -22,14 +22,17 @@ pipeline {
         stage('Push Docker image') {
             steps {
                 script {
+                    sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 499756076901.dkr.ecr.us-east-1.amazonaws.com"
+                    sh "docker tag demoapp:${env.BUILD_ID} 499756076901.dkr.ecr.us-east-1.amazonaws.com/demoapp:latest"
+                    sh "docker push 499756076901.dkr.ecr.us-east-1.amazonaws.com/demoapp:latest"
                     // Authenticate to ECR
-                    sh "aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${accountID}.dkr.ecr.${region}.amazonaws.com"
+                    //sh "aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${accountID}.dkr.ecr.${region}.amazonaws.com"
 
                     // Tag the image with the ECR repository URL
-                    sh "docker tag ${DOCKER_IMAGE}:${env.BUILD_ID} ${accountID}.dkr.ecr.${region}.amazonaws.com/demoapp:${env.BUILD_ID}"
+                    //sh "docker tag ${DOCKER_IMAGE}:${env.BUILD_ID} ${accountID}.dkr.ecr.${region}.amazonaws.com/demoapp:${env.BUILD_ID}"
 
                     // Push the image
-                     sh "docker push ${accountID}.dkr.ecr.${region}.amazonaws.com/demoapp:${env.BUILD_ID}"
+                     //sh "docker push ${accountID}.dkr.ecr.${region}.amazonaws.com/demoapp:${env.BUILD_ID}"
                 }
             }
         }
