@@ -39,12 +39,11 @@ pipeline {
 
         stage('Deploy to EKS') {
             steps {
-                withCredentials([file(credentialsId: "${KUBECONFIG_CREDENTIALS_ID}", variable: 'KUBECONFIG')]) {
-                    sh "kubectl config use-context ${EKS_CLUSTER_NAME}"
-                    sh """
-                        kubectl run your-deployment --image=${DOCKER_IMAGE}:${env.BUILD_ID} 
-                        kubectl expose deployment your-deployment --type=LoadBalancer --port=80
-                    """
+                sh "kubectl apply -f k8s-manifest/namespace.yaml"
+                sh "kubectl apply -f k8s-manifest/deployment.yaml -n github-copilot "
+                sh "kubectl apply -f k8s-manifest/service.yaml -n github-copilot"
+                sh "kubectl apply -f k8s-manifest/hpa.yaml -n github-copilot"
+                sh "kubectl apply -f k8s-manifest/ingress.yaml -n github-copilot"
                 }
             }
         }
