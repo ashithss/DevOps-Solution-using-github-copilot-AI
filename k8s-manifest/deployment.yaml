@@ -38,13 +38,13 @@ spec:
           capabilities:
             drop:
             - ALL
-        volumeMounts:
-        - mountPath: "/data"
-          name: azure-storage
+        # volumeMounts:
+        # - mountPath: "/data"
+        #   name: azure-storage
       securityContext:
         fsGroup: 2000
-      volumes:
-      - name: azure-storage
-        persistentVolumeClaim:
-          claimName: azure-pvc
+      # volumes:
+      # - name: azure-storage
+      #   persistentVolumeClaim:
+      #     claimName: azure-pvc
         
