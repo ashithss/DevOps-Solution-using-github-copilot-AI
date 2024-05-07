@@ -5,7 +5,7 @@ pipeline {
         DOCKER_IMAGE = 'demoapp'
         DOCKER_CREDENTIALS_ID = 'your-dockerhub-credentials-id'
         KUBECONFIG_CREDENTIALS_ID = 'your-kubeconfig-credentials-id'
-        EKS_CLUSTER_NAME = 'your-eks-cluster-name'
+        EKS_CLUSTER_NAME = 'my-cluster'
         region = 'us-east-1'
         accountID = '4997-5607-6901'
     }
@@ -39,16 +39,25 @@ pipeline {
 
         stage('Deploy to EKS') {
             steps {
-                    script{
-                        sh "sudo su - ec2-user"
-                        sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
-                        sh "kubectl apply -f k8s-manifest/namespace.yaml"
-                        sh "kubectl apply -f k8s-manifest/deployment.yaml -n github-copilot "
-                        sh "kubectl apply -f k8s-manifest/service.yaml -n github-copilot"
-                        sh "kubectl apply -f k8s-manifest/hpa.yaml -n github-copilot"
-                        sh "kubectl apply -f k8s-manifest/ingress.yaml -n github-copilot"
-                    }
+                withCredentials([file(credentialsId: "${KUBECONFIG_CREDENTIALS_ID}", variable: 'KUBECONFIG')]) {
+                    sh "kubectl config use-context ${EKS_CLUSTER_NAME}"
+                    sh "kubectl apply -f k8s-manifest/namespace.yaml"
                 }
             }
         }
+
+        // stage('Deploy to EKS') {
+        //     steps {
+        //             script{
+        //                 sh "sudo su - ec2-user"
+        //                 sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
+        //                 sh "kubectl apply -f k8s-manifest/namespace.yaml"
+        //                 sh "kubectl apply -f k8s-manifest/deployment.yaml -n github-copilot "
+        //                 sh "kubectl apply -f k8s-manifest/service.yaml -n github-copilot"
+        //                 sh "kubectl apply -f k8s-manifest/hpa.yaml -n github-copilot"
+        //                 sh "kubectl apply -f k8s-manifest/ingress.yaml -n github-copilot"
+        //             }
+        //         }
+        //     }
+        // }
     }
