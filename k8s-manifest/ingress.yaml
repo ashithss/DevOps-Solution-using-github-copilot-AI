@@ -4,7 +4,7 @@ metadata:
   name: your-app-ingress
 spec:
   rules:
-  - host: python-app.10.2.2.37.nip.io
+  - host: python-app.44.220.50.209.nip.io
     http:
       paths:
       - pathType: Prefix
