@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = '499756076901.dkr.ecr.us-east-1.amazonaws.com/demoapp:latest'
+        DOCKER_IMAGE = 'demoapp'
         DOCKER_CREDENTIALS_ID = 'your-dockerhub-credentials-id'
         KUBECONFIG_CREDENTIALS_ID = 'your-kubeconfig-credentials-id'
         EKS_CLUSTER_NAME = 'your-eks-cluster-name'
@@ -26,10 +26,10 @@ pipeline {
                     sh "aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${accountID}.dkr.ecr.your-region.amazonaws.com"
 
                     // Tag the image with the ECR repository URL
-                    // sh "docker tag ${DOCKER_IMAGE}:${env.BUILD_ID} your-account-id.dkr.ecr.your-region.amazonaws.com/your-repo-name:${env.BUILD_ID}"
+                    sh "docker tag ${DOCKER_IMAGE}:${env.BUILD_ID} ${accountID}.dkr.ecr.${region}.amazonaws.com/demoapp:${env.BUILD_ID}"
 
                     // Push the image
-                    sh "docker push ${DOCKER_IMAGE}:${env.BUILD_ID}"
+                     sh "docker push ${accountID}.dkr.ecr.${region}.amazonaws.com/demoapp:${env.BUILD_ID}"
                 }
             }
         }
