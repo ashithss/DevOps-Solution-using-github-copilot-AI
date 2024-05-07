@@ -38,29 +38,28 @@ pipeline {
         //     }
         // }
 
-        stage('Deploy to EKS') {
-            steps {
-                withCredentials([file(credentialsId: "${KUBECONFIG_CREDENTIALS_ID}", variable: 'KUBECONFIG_CREDENTIALS')]) {
-                    sh "kubectl --kubeconfig=$KUBECONFIG_CREDENTIALS get pods"
-                    sh "kubectl apply -f k8s-manifest/namespace.yaml"
-                }
-            }
-        }
-
         // stage('Deploy to EKS') {
         //     steps {
-        //             script{
-        //                 sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
-        //                 sh "hostname"
-        //                 sh "kubectl get pods"
-        //                 sh "kubectl config use-context my-cluster"
-        //                 sh "kubectl apply -f k8s-manifest/namespace.yaml"
-        //                 sh "kubectl apply -f k8s-manifest/deployment.yaml -n github-copilot "
-        //                 sh "kubectl apply -f k8s-manifest/service.yaml -n github-copilot"
-        //                 sh "kubectl apply -f k8s-manifest/hpa.yaml -n github-copilot"
-        //                 sh "kubectl apply -f k8s-manifest/ingress.yaml -n github-copilot"
-        //             }
+        //         withCredentials([file(credentialsId: "${KUBECONFIG_CREDENTIALS_ID}", variable: 'KUBECONFIG_CREDENTIALS')]) {
+        //             sh "kubectl --kubeconfig=$KUBECONFIG_CREDENTIALS get pods"
+        //             sh "kubectl apply -f k8s-manifest/namespace.yaml"
         //         }
         //     }
+        // }
+
+        stage('Deploy to EKS') {
+            steps {
+                    script{
+                        // sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
+                        sh "hostname"
+                        sh "kubectl get pods"
+                        sh "kubectl apply -f k8s-manifest/namespace.yaml"
+                        sh "kubectl apply -f k8s-manifest/deployment.yaml -n github-copilot "
+                        sh "kubectl apply -f k8s-manifest/service.yaml -n github-copilot"
+                        sh "kubectl apply -f k8s-manifest/hpa.yaml -n github-copilot"
+                        sh "kubectl apply -f k8s-manifest/ingress.yaml -n github-copilot"
+                    }
+                }
+            }
         }
     }
