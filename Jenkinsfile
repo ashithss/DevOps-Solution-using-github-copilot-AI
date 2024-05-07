@@ -50,21 +50,13 @@ pipeline {
         stage('Deploy to EKS') {
             steps {
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'AWS_ID']]) {
-                    // Your AWS CLI or SDK commands here
-                    sh 'aws s3 ls'  // Example AWS CLI command
-                    sh 'kubectl get pods'  
+                    sh 'kubectl get pods'
+                    sh "kubectl apply -f k8s-manifest/namespace.yaml"
+                    sh "kubectl apply -f k8s-manifest/deployment.yaml -n github-copilot "
+                    sh "kubectl apply -f k8s-manifest/service.yaml -n github-copilot"
+                    sh "kubectl apply -f k8s-manifest/hpa.yaml -n github-copilot"
+                    sh "kubectl apply -f k8s-manifest/ingress.yaml -n github-copilot"
                 }
-                    // script{
-                    //     // sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
-                    //     sh "hostname"
-                    //     sh "touch file.txt"
-                    //     sh "kubectl get pods"
-                    //     sh "kubectl apply -f k8s-manifest/namespace.yaml"
-                    //     sh "kubectl apply -f k8s-manifest/deployment.yaml -n github-copilot "
-                    //     sh "kubectl apply -f k8s-manifest/service.yaml -n github-copilot"
-                    //     sh "kubectl apply -f k8s-manifest/hpa.yaml -n github-copilot"
-                    //     sh "kubectl apply -f k8s-manifest/ingress.yaml -n github-copilot"
-                    // }
                 }
             }
         }
